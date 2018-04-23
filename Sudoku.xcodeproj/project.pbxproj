@@ -12,6 +12,11 @@
 		32A6F988208E966F005927FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F986208E966F005927FB /* Main.storyboard */; };
 		32A6F98A208E966F005927FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F989208E966F005927FB /* Assets.xcassets */; };
 		32A6F98D208E966F005927FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F98B208E966F005927FB /* LaunchScreen.storyboard */; };
+		32A6F997208E9A5B005927FB /* hard.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F994208E9A5B005927FB /* hard.plist */; };
+		32A6F998208E9A5B005927FB /* simple.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F995208E9A5B005927FB /* simple.plist */; };
+		32A6F999208E9A5B005927FB /* SudokuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6F996208E9A5B005927FB /* SudokuView.swift */; };
+		32A6F99C208E9B6A005927FB /* square.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F99A208E9B6A005927FB /* square.pdf */; };
+		32A6F99D208E9B6A005927FB /* darksquare.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 32A6F99B208E9B6A005927FB /* darksquare.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		32A6F989208E966F005927FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A6F98C208E966F005927FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A6F98E208E966F005927FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32A6F994208E9A5B005927FB /* hard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hard.plist; sourceTree = "<group>"; };
+		32A6F995208E9A5B005927FB /* simple.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = simple.plist; sourceTree = "<group>"; };
+		32A6F996208E9A5B005927FB /* SudokuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuView.swift; sourceTree = "<group>"; };
+		32A6F99A208E9B6A005927FB /* square.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = square.pdf; path = Assets.xcassets/square.pdf; sourceTree = "<group>"; };
+		32A6F99B208E9B6A005927FB /* darksquare.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = darksquare.pdf; path = Assets.xcassets/darksquare.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +68,13 @@
 				32A6F984208E966F005927FB /* ViewController.swift */,
 				32A6F986208E966F005927FB /* Main.storyboard */,
 				32A6F989208E966F005927FB /* Assets.xcassets */,
+				32A6F99B208E9B6A005927FB /* darksquare.pdf */,
+				32A6F99A208E9B6A005927FB /* square.pdf */,
 				32A6F98B208E966F005927FB /* LaunchScreen.storyboard */,
 				32A6F98E208E966F005927FB /* Info.plist */,
+				32A6F994208E9A5B005927FB /* hard.plist */,
+				32A6F995208E9A5B005927FB /* simple.plist */,
+				32A6F996208E9A5B005927FB /* SudokuView.swift */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -124,8 +139,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A6F98D208E966F005927FB /* LaunchScreen.storyboard in Resources */,
+				32A6F99C208E9B6A005927FB /* square.pdf in Resources */,
+				32A6F99D208E9B6A005927FB /* darksquare.pdf in Resources */,
 				32A6F98A208E966F005927FB /* Assets.xcassets in Resources */,
+				32A6F998208E9A5B005927FB /* simple.plist in Resources */,
 				32A6F988208E966F005927FB /* Main.storyboard in Resources */,
+				32A6F997208E9A5B005927FB /* hard.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A6F999208E9A5B005927FB /* SudokuView.swift in Sources */,
 				32A6F985208E966F005927FB /* ViewController.swift in Sources */,
 				32A6F983208E966F005927FB /* AppDelegate.swift in Sources */,
 			);
