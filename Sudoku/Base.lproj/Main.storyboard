@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-8d-8GW" userLabel="PuzzleView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-8d-8GW" userLabel="PuzzleView" customClass="SudokuView" customModule="Sudoku" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" secondItem="5xX-8d-8GW" secondAttribute="height" multiplier="1:1" id="2SJ-4O-b8I"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="8bW-EY-cq5" appends="YES" id="IP1-1z-IFz"/>
+                                    <outletCollection property="gestureRecognizers" destination="Kb4-53-KuM" appends="YES" id="7fn-Rm-Csv"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -44,7 +44,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="8bW-EY-cq5"/>
+                <tapGestureRecognizer id="Kb4-53-KuM">
+                    <connections>
+                        <action selector="handleTap:" destination="5xX-8d-8GW" id="8Pg-vN-rWG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
