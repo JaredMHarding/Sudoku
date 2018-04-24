@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Sudoku {
+class Sudoku: Codable {
+    
+    var puzzleValues: [[Int]] = [
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0]
+    ]
     
     func numberAt(row r: Int, column c: Int) -> Int {
         return 0

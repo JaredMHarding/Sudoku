@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var PuzzleView: SudokuView!
+    var pencilEnabled: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func pencilPressed(_ sender: UIButton) {
+        pencilEnabled = !pencilEnabled
+        sender.isSelected = pencilEnabled
+    }
+    
 }
-

@@ -12,7 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var sudoku: Sudoku = Sudoku()
+    lazy var simplePuzzles: [String] = getPuzzles("simple")
+    lazy var hardPuzzles: [String] = getPuzzles("hard")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -40,7 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func getPuzzles(_ name: String) -> [String] {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
+        guard let data = try? Data(contentsOf: url) else {return [] }
+        guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
+        return array
+    }
 
 }
 
