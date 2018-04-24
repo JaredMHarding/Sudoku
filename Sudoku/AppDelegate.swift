@@ -12,12 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var sudoku: Sudoku = Sudoku()
+    var sudoku: Sudoku?
     lazy var simplePuzzles: [String] = getPuzzles("simple")
     lazy var hardPuzzles: [String] = getPuzzles("hard")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        sudoku = nil
         return true
     }
 

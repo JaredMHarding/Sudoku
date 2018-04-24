@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameViewController.swift
 //  Sudoku
 //
 //  Created by Jared Micheal Harding on 4/23/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
     
     @IBOutlet weak var PuzzleView: SudokuView!
     var pencilEnabled: Bool = false

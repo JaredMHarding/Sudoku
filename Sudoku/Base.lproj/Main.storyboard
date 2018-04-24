@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EYB-Gy-vNE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,10 +11,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title View Controller-->
+        <scene sceneID="tyj-TR-yEh">
+            <objects>
+                <viewController title="Title View Controller" id="EYB-Gy-vNE" customClass="TitleViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EZk-rS-VE1" userLabel="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mMW-BJ-YPw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0go-Te-tgs" userLabel="SudokuTitle">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="SUDOKU">
+                                                <attributes>
+                                                    <font key="NSFont" size="48" name="BradleyHandITCTT-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-ak-e1d">
+                                        <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iag-pE-jy0">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                                <state key="normal" title="New Easy Game" backgroundImage="square"/>
+                                                <connections>
+                                                    <segue destination="BYZ-38-t0r" kind="show" id="hiL-ag-aUp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-48-1KD">
+                                                <rect key="frame" x="0.0" y="108" width="375" height="107.5"/>
+                                                <state key="normal" title="New Hard Game" backgroundImage="square"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-a4-EpW">
+                                                <rect key="frame" x="0.0" y="215.5" width="375" height="108"/>
+                                                <state key="normal" title="Continue Game" backgroundImage="square"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mMW-BJ-YPw" firstAttribute="bottom" secondItem="BtB-Wk-zL4" secondAttribute="bottom" id="G08-rG-TIt"/>
+                            <constraint firstItem="mMW-BJ-YPw" firstAttribute="trailing" secondItem="BtB-Wk-zL4" secondAttribute="trailing" id="Mfr-5M-7tC"/>
+                            <constraint firstItem="mMW-BJ-YPw" firstAttribute="top" secondItem="BtB-Wk-zL4" secondAttribute="top" id="Wu4-JQ-8DC"/>
+                            <constraint firstItem="mMW-BJ-YPw" firstAttribute="leading" secondItem="BtB-Wk-zL4" secondAttribute="leading" id="ipa-55-Izu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BtB-Wk-zL4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hY7-LH-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-778" y="30"/>
+        </scene>
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game View Controller" id="BYZ-38-t0r" userLabel="Game View Controller" customClass="GameViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +110,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-0a-uKx">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="90.5"/>
-                                                <state key="normal" title="P" backgroundImage="square"/>
+                                                <state key="normal" title="Pencil" backgroundImage="square"/>
                                                 <state key="selected" backgroundImage="darksquare"/>
                                                 <connections>
                                                     <action selector="pencilPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wf5-CR-jjs"/>
