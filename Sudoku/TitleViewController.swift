@@ -24,5 +24,19 @@ class TitleViewController: UIViewController {
         // doesn't need to do anything
     }
     
+    @IBAction func startGame(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if (sender.tag == 1) {
+            let simples = appDelegate.simplePuzzles
+            let random = Int(arc4random_uniform(UInt32(simples.count)))
+            let ps = simples[random]
+            appDelegate.sudoku = Sudoku(puzzleString: ps)
+        } else if (sender.tag == 2) {
+            
+        }
+        
+        
+    }
+    
 }
 

@@ -37,18 +37,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-ak-e1d">
                                         <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iag-pE-jy0">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iag-pE-jy0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                                 <state key="normal" title="New Easy Game" backgroundImage="square"/>
                                                 <connections>
+                                                    <action selector="startGame:" destination="EYB-Gy-vNE" eventType="touchUpInside" id="Zi8-Ys-hpV"/>
                                                     <segue destination="BYZ-38-t0r" kind="show" id="hiL-ag-aUp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-48-1KD">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAB-48-1KD">
                                                 <rect key="frame" x="0.0" y="108" width="375" height="107.5"/>
                                                 <state key="normal" title="New Hard Game" backgroundImage="square"/>
+                                                <connections>
+                                                    <action selector="startGame:" destination="EYB-Gy-vNE" eventType="touchUpInside" id="spg-K8-uvo"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-a4-EpW">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-a4-EpW">
                                                 <rect key="frame" x="0.0" y="215.5" width="375" height="108"/>
                                                 <state key="normal" title="Continue Game" backgroundImage="square"/>
                                             </button>
