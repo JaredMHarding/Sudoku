@@ -20,10 +20,6 @@ class TitleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unwindFunction(unwindSegue: UIStoryboardSegue) {
-        // doesn't need to do anything
-    }
-    
     @IBAction func startGame(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if (sender.tag == 1) {
@@ -36,11 +32,16 @@ class TitleViewController: UIViewController {
             let random = Int(arc4random_uniform(UInt32(hards.count)))
             let ps = hards[random]
             appDelegate.sudoku = Sudoku(puzzleString: ps)
+        } else if (sender.tag == 3) {
+            // TODO: Add game persistence
+        } else {
+            return
         }
-        else if (sender.tag == 3) {
-            
-        }
+        performSegue(withIdentifier: "titleToGame", sender: self)
+    }
+    
+    @IBAction func unwindFunction(unwindSegue: UIStoryboardSegue) {
+        // doesn't need to do anything
     }
     
 }
-
