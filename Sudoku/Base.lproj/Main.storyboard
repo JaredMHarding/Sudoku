@@ -194,6 +194,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zan-Tj-dLQ">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="76"/>
                                                 <state key="normal" title="Menu" backgroundImage="square"/>
+                                                <connections>
+                                                    <action selector="menuPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tgm-MV-3na"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

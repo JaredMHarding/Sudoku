@@ -100,4 +100,14 @@ class Sudoku: Codable {
         return puzzle[r][c]!.pencilValues[n-1]
     }
     
+    func clearAll() {
+        for row in 0..<9 {
+            for column in 0..<9 {
+                if (!(puzzle[row][column]!.fixed)) {
+                    puzzle[row][column]!.value = 0
+                    puzzle[row][column]!.pencilValues = Cell.resetPencilValues
+                }
+            }
+        }
+    }
 }

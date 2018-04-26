@@ -67,6 +67,28 @@ class GameViewController: UIViewController {
         PuzzleView.setNeedsDisplay()
     }
     
+    @IBAction func menuPressed() {
+        let alert = UIAlertController(title: "Menu",
+                                      message: "",
+                                      preferredStyle: .actionSheet)
+        let alertActionReturn = UIAlertAction(title: "Return", style: .cancel, handler: {
+            action in
+            // do nothing
+        })
+        let alertActionClearConflicting = UIAlertAction(title: "Clear All Conflicting Cells", style: .default, handler: {
+            action in
+            
+        })
+        let alertActionClearAll = UIAlertAction(title: "Clear All Cells", style: .destructive, handler: {
+            action in
+            
+        })
+        alert.addAction(alertActionReturn)
+        alert.addAction(alertActionClearConflicting)
+        alert.addAction(alertActionClearAll)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func leaveGamePressed() {
         let alert = UIAlertController(title: "Are you sure you want to abandon your current game?",
                                       message: "Your game data will not be saved.",
