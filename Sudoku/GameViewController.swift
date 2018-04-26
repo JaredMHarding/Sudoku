@@ -28,4 +28,17 @@ class GameViewController: UIViewController {
         sender.isSelected = pencilEnabled
     }
     
+    @IBAction func numberPressed(_ sender: UIButton) {
+        let row = PuzzleView.selected.row
+        let column = PuzzleView.selected.column
+        if ((row < 0) || (column < 0)) {
+            return
+        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let buttonValue = Int(sender.currentTitle!)!
+        
+        appDelegate.sudoku!.puzzle[row][column]!.value = buttonValue
+        PuzzleView.setNeedsDisplay()
+    }
+    
 }

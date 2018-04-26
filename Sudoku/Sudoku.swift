@@ -12,9 +12,10 @@ class Sudoku: Codable {
     
     struct Cell: Codable {
         var value: Int
-        var pencilValues: [Bool]?
-        var pencilMode: Bool?
+        var pencilValues: [Bool]
         var fixed: Bool
+        
+        static let resetPencilValues = [false,false,false,false,false,false,false,false,false]
     }
     
     // puzzle will have no nils after initialization
@@ -35,9 +36,9 @@ class Sudoku: Codable {
         assert(ps.count == 81)
         for char in ps {
             if (char == ".") {
-                puzzle[row][col] = Cell(value: 0,pencilValues: nil,pencilMode: false,fixed: false)
+                puzzle[row][col] = Cell(value: 0,pencilValues: Cell.resetPencilValues,fixed: false)
             } else {
-                puzzle[row][col] = Cell(value: Int("\(char)")!,pencilValues: nil,pencilMode: nil,fixed: true)
+                puzzle[row][col] = Cell(value: Int("\(char)")!,pencilValues: Cell.resetPencilValues,fixed: true)
             }
             // increment indices
             col += 1
@@ -87,11 +88,16 @@ class Sudoku: Codable {
     }
     
     func anyPencilSetAt(row r: Int, column c: Int) -> Bool {
-        return puzzle[r][c]!.pencilMode!
+        for i in 0..<9 {
+            if (puzzle[r][c]!.pencilValues[i] == true) {
+                return true
+            }
+        }
+        return false
     }
     
     func isSetPencil(_ n: Int, row r: Int, column c: Int) -> Bool {
-        return puzzle[r][c]!.pencilValues![n-1]
+        return puzzle[r][c]!.pencilValues[n-1]
     }
     
 }

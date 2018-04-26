@@ -32,10 +32,14 @@ class TitleViewController: UIViewController {
             let ps = simples[random]
             appDelegate.sudoku = Sudoku(puzzleString: ps)
         } else if (sender.tag == 2) {
+            let hards = appDelegate.hardPuzzles
+            let random = Int(arc4random_uniform(UInt32(hards.count)))
+            let ps = hards[random]
+            appDelegate.sudoku = Sudoku(puzzleString: ps)
+        }
+        else if (sender.tag == 3) {
             
         }
-        
-        
     }
     
 }
