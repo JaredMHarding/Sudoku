@@ -13,12 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sudoku: Sudoku?
+    var savedGameURL: URL?
     lazy var simplePuzzles: [String] = getPuzzles("simple")
     lazy var hardPuzzles: [String] = getPuzzles("hard")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         sudoku = nil
+        savedGameURL = nil
         return true
     }
 

@@ -59,6 +59,10 @@ class Sudoku: Codable {
     
     func isConflictingEntryAt(row r: Int, column c: Int) -> Bool {
         let value = puzzle[r][c]!.value
+        if (value == 0) {
+            // cell has no pen value, so pencil cells don't count as conflicting values
+            return false
+        }
         // test same col
         for i in 0..<9 {
             if ((i != r) && (puzzle[i][c]!.value == value)) {
@@ -100,14 +104,48 @@ class Sudoku: Codable {
         return puzzle[r][c]!.pencilValues[n-1]
     }
     
-    func clearAll() {
-        for row in 0..<9 {
-            for column in 0..<9 {
-                if (!(puzzle[row][column]!.fixed)) {
-                    puzzle[row][column]!.value = 0
-                    puzzle[row][column]!.pencilValues = Cell.resetPencilValues
+    func clearCell(_ r: Int, _ c: Int) {
+        // never clears a fixed cell
+        if (!(puzzle[r][c]!.fixed)) {
+            puzzle[r][c]!.value = 0
+            puzzle[r][c]!.pencilValues = Cell.resetPencilValues
+        }
+    }
+    
+    func clearConflicting() {
+        var conflictingEntries: [(row: Int,column: Int)] = []
+        // pick up all the conflicting entries
+        for r in 0..<9 {
+            for c in 0..<9 {
+                if (isConflictingEntryAt(row: r, column: c)) {
+                    conflictingEntries.append((r,c))
                 }
             }
         }
+        // this treats all conflicts as equal and gets rid of them all
+        // not just the first one it sees as it iterates through the array
+        for tuple in conflictingEntries {
+            clearCell(tuple.row,tuple.column)
+        }
+    }
+    
+    func clearAll() {
+        for r in 0..<9 {
+            for c in 0..<9 {
+                clearCell(r,c)
+            }
+        }
+    }
+    
+    func isSolved() -> Bool {
+        for r in 0..<9 {
+            for c in 0..<9 {
+                // if every non-fixed non-empty cell has no conflicting entries
+                if ((puzzle[r][c]!.value == 0) || ((!(puzzle[r][c]!.fixed)) && (isConflictingEntryAt(row: r, column: c)))) {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }

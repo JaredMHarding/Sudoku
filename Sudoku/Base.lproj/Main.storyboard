@@ -54,6 +54,9 @@
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eK-a4-EpW">
                                                 <rect key="frame" x="0.0" y="201" width="375" height="100.5"/>
                                                 <state key="normal" title="Continue Game" backgroundImage="square"/>
+                                                <connections>
+                                                    <action selector="startGame:" destination="EYB-Gy-vNE" eventType="touchUpInside" id="BT4-Pb-WkK"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -69,12 +72,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BtB-Wk-zL4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zvj-d3-yHC"/>
+                    <navigationItem key="navigationItem" id="zvj-d3-yHC">
+                        <barButtonItem key="backBarButtonItem" title="Title Screen" id="qiy-Ew-8rb">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="PFu-Ny-ofD" id="0k8-Ji-s9C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="continueButton" destination="7eK-a4-EpW" id="GTE-ax-zZs"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="titleToGame" id="BoL-ID-nCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hY7-LH-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PFu-Ny-ofD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-439.19999999999999" y="29.23538230884558"/>
         </scene>

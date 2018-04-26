@@ -11,11 +11,31 @@ import UIKit
 class GameViewController: UIViewController {
     
     @IBOutlet weak var PuzzleView: SudokuView!
-    var pencilEnabled: Bool = false
+    var pencilOn: Bool = false
+    var leaveGameButtonPressed: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        // see if it was the leave game button that was pressed
+        if (leaveGameButtonPressed) {
+            leaveGameButtonPressed = false
+            appDelegate.savedGameURL = nil
+            return
+        }
+        // save the current game if leaving normally
+        let propertyListEncoder = PropertyListEncoder()
+        if let encodedSudoku = try? propertyListEncoder.encode(appDelegate.sudoku) {
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let archiveURL = documentsDirectory.appendingPathComponent("savedSudoku").appendingPathExtension("plist")
+            try? encodedSudoku.write(to: archiveURL)
+            appDelegate.savedGameURL = archiveURL
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,8 +44,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func pencilPressed(_ sender: UIButton) {
-        pencilEnabled = !pencilEnabled
-        sender.isSelected = pencilEnabled
+        pencilOn = !pencilOn
+        sender.isSelected = pencilOn
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -39,7 +59,7 @@ class GameViewController: UIViewController {
         // check if the cell is empty
         if (appDelegate.sudoku!.puzzle[row][column]!.value == 0) {
             // check pencil values
-            if (pencilEnabled == true) {
+            if (pencilOn == true) {
                 // toggle the pencil value
                 appDelegate.sudoku!.puzzle[row][column]!.pencilValues[buttonValue-1] = !(appDelegate.sudoku!.puzzle[row][column]!.pencilValues[buttonValue-1])
             } else {
@@ -50,6 +70,26 @@ class GameViewController: UIViewController {
             appDelegate.sudoku!.puzzle[row][column]!.value = 0
         } else {
             return
+        }
+        // check if the puzzle is solved
+        if (appDelegate.sudoku!.isSolved()) {
+            // the player won
+            let alert = UIAlertController(title: "You've won!",
+                                          message: "What would you like to do now?",
+                                          preferredStyle: .actionSheet)
+            let alertActionTitleScreen = UIAlertAction(title: "Return To Title Screen", style: .default, handler: {
+                action in
+                // same as if you pressed yes on the leave game alert screen
+                self.leaveGameButtonPressed = true
+                self.performSegue(withIdentifier: "gameToTitle", sender: self)
+            })
+            let alertActionContinue = UIAlertAction(title: "Return To Current Game", style: .cancel, handler: {
+                action in
+                // do nothing
+            })
+            alert.addAction(alertActionTitleScreen)
+            alert.addAction(alertActionContinue)
+            self.present(alert, animated: true, completion: nil)
         }
         PuzzleView.setNeedsDisplay()
     }
@@ -62,12 +102,12 @@ class GameViewController: UIViewController {
         }
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         // clear the cell
-        appDelegate.sudoku!.puzzle[row][column]!.value = 0
-        appDelegate.sudoku!.puzzle[row][column]!.pencilValues = Sudoku.Cell.resetPencilValues
+        appDelegate.sudoku!.clearCell(row,column)
         PuzzleView.setNeedsDisplay()
     }
     
     @IBAction func menuPressed() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let alert = UIAlertController(title: "Menu",
                                       message: "",
                                       preferredStyle: .actionSheet)
@@ -77,11 +117,13 @@ class GameViewController: UIViewController {
         })
         let alertActionClearConflicting = UIAlertAction(title: "Clear All Conflicting Cells", style: .default, handler: {
             action in
-            
+            appDelegate.sudoku!.clearConflicting()
+            self.PuzzleView.setNeedsDisplay()
         })
         let alertActionClearAll = UIAlertAction(title: "Clear All Cells", style: .destructive, handler: {
             action in
-            
+            appDelegate.sudoku!.clearAll()
+            self.PuzzleView.setNeedsDisplay()
         })
         alert.addAction(alertActionReturn)
         alert.addAction(alertActionClearConflicting)
@@ -95,7 +137,8 @@ class GameViewController: UIViewController {
                                       preferredStyle: .alert)
         let alertActionYes = UIAlertAction(title: "Yes", style: .destructive, handler: {
             action in
-            // delete saved game and return to the title screen
+            // this will delete saved game and return to the title screen
+            self.leaveGameButtonPressed = true
             self.performSegue(withIdentifier: "gameToTitle", sender: self)
         })
         let alertActionNo = UIAlertAction(title: "No", style: .cancel, handler: {
